@@ -1,0 +1,18 @@
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.link {
+  border-radius: 5px;
+  font-size: 15px;
+  color: #72777e;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.link:hover {
+  background-color: #eef9fd; /* Customize hover background color */
+}
