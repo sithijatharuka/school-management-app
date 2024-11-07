@@ -1,0 +1,14 @@
+.wrapper {
+  height: 150px;
+  background-color: #cfcefe;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  width: 50px;
+  margin: 5px;
+  padding: 10px;
+}
+
+

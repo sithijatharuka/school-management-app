@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./Menu.module.css";
+import { role } from "@/utils/data";
 
 const menuItems = [
   {
@@ -122,13 +123,15 @@ const Menu = () => {
       {menuItems.map((i) => (
         <div className={styles.textWrapper} key={i.title}>
           <span>{i.title}</span>
-          {i.items.map((item) => (
-            <div className={styles.link}>
-            <Link href={item.href} key={item.label}>
-              <span>{item.label}</span>
-            </Link>
-            </div>
-          ))}
+          {i.items.map((item) => {
+            if (item.visible.includes(role)) {
+              return (
+                <Link className={styles.link} href={item.href} key={item.label}>
+                  <span>{item.label}</span>
+                </Link>
+              );
+            }
+          })}
         </div>
       ))}
     </div>

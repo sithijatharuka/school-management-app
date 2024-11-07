@@ -1,0 +1,25 @@
+.container {
+  height: 50px;
+  display: flex;
+  justify-items: center;
+  justify-content: end;
+  background-color: #f7f8fa;
+}
+
+.nameBox {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: end;
+}
+
+.avatar{
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+}

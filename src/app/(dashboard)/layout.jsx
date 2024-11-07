@@ -1,5 +1,6 @@
-import Menu from "@/components/Menu";
+import Menu from "@/components/Menu/Menu";
 import styles from "./layout.module.css";
+import Navbar from "@/components/Navbar/Navbar";
 
 export default function DashboardLayout({ children }) {
   return (
@@ -10,8 +11,10 @@ export default function DashboardLayout({ children }) {
         <Menu />
       </div>
       {/* RIGHT */}
-      <div className={styles.right}></div>
-      {children}
+      <div className={styles.right}>
+        <Navbar />
+        {children}
+      </div>
     </div>
   );
 }
