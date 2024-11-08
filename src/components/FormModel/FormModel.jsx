@@ -28,8 +28,6 @@ const schema = z.object({
   img: z.instanceof(File, { message: "Image is required" }),
 });
 
-// type Inputs = z.infer<typeof schema>;
-
 const FormModel = () => {
   const {
     register,
@@ -40,13 +38,6 @@ const FormModel = () => {
   });
 
   return (
-    // <form action={addStudent}>
-    //   <h1>Create a New Student</h1>
-    //   <input type="text" name="username" required />
-    //   <br />
-    //   <button type="submit">Create</button>
-    // </form>
-    // form
     <form action={addStudent} className={styles.wrapper}>
       <h1>Create a new teacher</h1>
       <span>Authentication Information</span>
@@ -58,6 +49,7 @@ const FormModel = () => {
           error={errors?.username}
         />
         <InputField
+          type="email"
           label="Email"
           name="email"
           register={register}

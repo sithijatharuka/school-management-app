@@ -5,6 +5,7 @@ const InputField = ({ label, type, register, name, error }) => {
     <div className={styles.itemBox}>
       <label className={styles.label}>{label}</label>
       <input
+        required
         type={type}
         {...register(name)}
         name={name}

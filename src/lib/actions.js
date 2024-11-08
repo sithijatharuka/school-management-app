@@ -56,3 +56,26 @@ export const addStudent = async (formData) => {
     // return { error: "Something went wrong!", details: errorDetails };
   }
 };
+
+export const getAllStudents = async () => {
+  try {
+    await connectToDb();
+    const students = await Student.find();
+    return students;
+  } catch (error) {
+    console.log(error);
+    return { error: "Something went wrong!" };
+  }
+};
+
+export const deleteStudent = async (studentId) => {
+  try {
+    await connectToDb();
+    await Student.findByIdAndDelete(studentId);
+    console.log("Student deleted");
+    return { success: true };
+  } catch (error) {
+    console.log(error);
+    return { error: "Student deletion failed!" };
+  }
+};
