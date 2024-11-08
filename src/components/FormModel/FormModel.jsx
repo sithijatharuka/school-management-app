@@ -1,9 +1,12 @@
+"use client";
 import styles from "@/components/FormModel/FormModel.module.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import InputField from "../InputField/InputField";
 import Image from "next/image";
+import { addStudent } from "@/lib/actions";
+import { useState } from "react";
 
 const schema = z.object({
   username: z
@@ -16,7 +19,8 @@ const schema = z.object({
     .min(8, { message: "Password must be at least 8 characters long!" }),
   firstName: z.string().min(1, { message: "First name is required!" }),
   lastName: z.string().min(1, { message: "Last name is required!" }),
-  phone: z.string().min(1, { message: "Phone is required!" }),
+  parentPhone: z.string().min(1, { message: "Phone is required!" }),
+  studentPhone: z.string().min(1, { message: "Phone is required!" }),
   address: z.string().min(1, { message: "Address is required!" }),
   bloodType: z.string().min(1, { message: "Blood Type is required!" }),
   birthday: z.date({ message: "Birthday is required!" }),
@@ -26,7 +30,7 @@ const schema = z.object({
 
 // type Inputs = z.infer<typeof schema>;
 
-const FormModel = ({ type, data }) => {
+const FormModel = () => {
   const {
     register,
     handleSubmit,
@@ -35,26 +39,27 @@ const FormModel = ({ type, data }) => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
-
   return (
-    <form className={styles.wrapper} onSubmit={onSubmit}>
+    // <form action={addStudent}>
+    //   <h1>Create a New Student</h1>
+    //   <input type="text" name="username" required />
+    //   <br />
+    //   <button type="submit">Create</button>
+    // </form>
+    // form
+    <form action={addStudent} className={styles.wrapper}>
       <h1>Create a new teacher</h1>
       <span>Authentication Information</span>
       <div className={styles.elementBox}>
         <InputField
           label="Username"
           name="username"
-          defaultValue={data?.username}
           register={register}
           error={errors?.username}
         />
         <InputField
           label="Email"
           name="email"
-          defaultValue={data?.email}
           register={register}
           error={errors?.email}
         />
@@ -62,7 +67,6 @@ const FormModel = ({ type, data }) => {
           label="Password"
           name="password"
           type="password"
-          defaultValue={data?.password}
           register={register}
           error={errors?.password}
         />
@@ -72,65 +76,59 @@ const FormModel = ({ type, data }) => {
         <InputField
           label="First Name"
           name="firstName"
-          defaultValue={data?.firstName}
           register={register}
           error={errors.firstName}
         />
         <InputField
           label="Last Name"
           name="lastName"
-          defaultValue={data?.lastName}
           register={register}
           error={errors.lastName}
         />
         <InputField
-          label="Phone"
-          name="phone"
-          defaultValue={data?.phone}
+          label="Parent Phone Number"
+          name="parentsPhone"
+          register={register}
+          error={errors.phone}
+        />
+        <InputField
+          label="Student Phone Number"
+          name="studentPhone"
           register={register}
           error={errors.phone}
         />
         <InputField
           label="Address"
           name="address"
-          defaultValue={data?.address}
           register={register}
           error={errors.address}
         />
         <InputField
           label="Blood Type"
           name="bloodType"
-          defaultValue={data?.bloodType}
           register={register}
           error={errors.bloodType}
         />
-        <InputField
+        {/* <InputField
           label="Birthday"
           name="birthday"
-          defaultValue={data?.birthday}
           register={register}
           error={errors.birthday}
           type="date"
-        />
-      </div>
+        /> */}
+        {/* </div>
       <div className={styles.elementBox}>
         <div>
-          <select
-            className={styles.inputStyle}
-            name=""
-            id=""
-            {...register("Gender")}
-            defaultValue={data?.sex}
-          >
+          <select className={styles.inputStyle} {...register("gender")}>
             <option value="male">Male</option>
-            <option value="male">Female</option>
+            <option value="female">Female</option>
           </select>
           {errors.sex?.message && (
             <p className={styles.errText}>{errors.sex.message.toString()}</p>
           )}
-        </div>
+        </div> */}
         {/* UPLOAD BUTTON */}
-        <div className={styles.itemBox}>
+        {/* <div className={styles.itemBox}>
           <label htmlFor="img" className={styles.label}>
             <Image src="/upload.png" alt="" height={28} width={28} />
             <span>Upload a Photo</span>
@@ -145,10 +143,12 @@ const FormModel = ({ type, data }) => {
           {errors.img?.message && (
             <p className={styles.errText}>{errors.img.message.toString()}</p>
           )}
-        </div>
+        </div> */}
       </div>
 
-      <button className={styles.createBtn}>Create</button>
+      <button type="submit" className={styles.createBtn}>
+        Create
+      </button>
     </form>
   );
 };

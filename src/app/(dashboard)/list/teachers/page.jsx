@@ -2,7 +2,7 @@
 import styles from "@/app/(dashboard)/list/teachers/page.module.css";
 import FormModel from "@/components/FormModel/FormModel";
 import Table from "@/components/Table/table";
-import { role, teachersData } from "@/utils/data";
+import { role, teachersData } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -98,7 +98,7 @@ const TeachersListPage = () => {
                 <div className={styles.closeBox} onClick={() => setOpen(false)}>
                   <Image src="/close.png" alt="" height={14} width={14} />
                 </div>
-                <FormModel />
+                <FormModel  />
               </div>
             </div>
           )}

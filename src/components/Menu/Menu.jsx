@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./Menu.module.css";
-import { role } from "@/utils/data";
+import { role } from "@/lib/data";
 
 const menuItems = [
   {
