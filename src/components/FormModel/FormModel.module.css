@@ -1,0 +1,80 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 30px;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.elementBox {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.createBtn {
+  cursor: pointer;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  background-color: #60a5fa;
+  border: none;
+  border-radius: 0.5rem;
+  margin-top: 30px;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+.createBtn:hover {
+  background-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Active state */
+.createBtn:active {
+  background-color: #2563eb;
+  transform: translateY(0);
+}
+
+.inputStyle {
+  border-color: #d7dae0;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  border: 1px solid #d7dae0;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+}
+
+/* Focus state*/
+.inputStyle:focus {
+  border-color: #4f86f0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 134, 240, 0.2);
+  background-color: #fff;
+}
+
+.input {
+  visibility: hidden;
+}
+
+.label {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.itemBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+}

@@ -1,3 +1,10 @@
+.title {
+  font-style: 5px;
+  color: #72777e;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
 .textWrapper {
   display: flex;
   flex-direction: column;

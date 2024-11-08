@@ -6,6 +6,11 @@
   background-color: #f7f8fa;
 }
 
+.avatarContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .nameBox {
   width: 20%;
   height: 100%;
@@ -15,11 +20,11 @@
   text-align: end;
 }
 
-.avatar{
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  display: flex;
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   margin-left: 10px;
   margin-right: 10px;
+  background-color: #f1f0ff;
 }

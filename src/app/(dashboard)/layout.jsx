@@ -7,7 +7,9 @@ export default function DashboardLayout({ children }) {
     <div className={styles.container}>
       {/* left */}
       <div className={styles.left}>
-        <h1>School App</h1>
+        <div className={styles.titleBox}>
+          <h1 className={styles.title}>EduMate</h1>
+        </div>
         <Menu />
       </div>
       {/* RIGHT */}

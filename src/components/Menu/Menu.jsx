@@ -122,7 +122,7 @@ const Menu = () => {
     <div className={styles.wrapper}>
       {menuItems.map((i) => (
         <div className={styles.textWrapper} key={i.title}>
-          <span>{i.title}</span>
+          <span className={styles.title}>{i.title}</span>
           {i.items.map((item) => {
             if (item.visible.includes(role)) {
               return (

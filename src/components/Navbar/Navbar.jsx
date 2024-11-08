@@ -7,7 +7,9 @@ export default function Navbar() {
         <h3>Sithija Tharuka</h3>
         <h5>Admin</h5>
       </div>
-      <div className={styles.avatar}></div>
+      <div className={styles.avatarContainer}>
+        <div className={styles.avatar}></div>
+      </div>
     </div>
   );
 }
