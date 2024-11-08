@@ -11,7 +11,7 @@ export const connectToDb = async () => {
     }
 
     // Await the connection to MongoDB
-    const db = await mongoose.connect(process.env.M);
+    const db = await mongoose.connect(process.env.MONGODB_URI);
 
     // Set connection status to avoid reconnecting
     connection.isConnected = db.connections[0].readyState;
