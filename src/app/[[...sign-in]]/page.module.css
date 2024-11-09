@@ -1,0 +1,20 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* Option 1: Light blue gradient */
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+
+  /* Option 2: Light purple gradient */
+  /* background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%); */
+
+  /* Option 3: Clean gray gradient */
+  /* background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); */
+
+  /* Option 4: Warm light gradient */
+  /* background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); */
+
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  padding: 20px;
+}

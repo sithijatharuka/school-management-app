@@ -2,6 +2,7 @@
 import { SignIn, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import styles from "@/app/[[...sign-in]]/page.module.css";
 
 export default function Page() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -15,5 +16,9 @@ export default function Page() {
     }
   }, [user, router]);
 
-  return <SignIn />;
+  return (
+    <div className={styles.page}>
+      <SignIn />
+    </div>
+  );
 }
