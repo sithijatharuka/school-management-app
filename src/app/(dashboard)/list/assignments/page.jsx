@@ -74,10 +74,6 @@ const AssignmentListPage = () => {
       <td>{item.title}</td>
       <td>{item.description}</td>
       <td>{item.subject}</td>
-      {/* <td>{item.dueDate.toDateString()}</td> */}
-      {/* <td>{item.createdBy}</td> */}
-      {/* <td>{item.isCompleted ? "Yes" : "No"}</td> */}
-      {/* Showing human-readable values */}
       <td>
         <div className={styles.actionbox}>
           <Link className={styles.link} href={"/"}>
