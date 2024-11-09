@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,8 +24,11 @@ export default function RootLayout({ children }) {
   return (
     <html className={`${geistSans.variable} ${geistMono.variable}`} lang="en">
       <body>
-        {children}
-        <ToastContainer position="bottom-right" />
+        <ClerkProvider>
+          <html lang="en">
+            <body>{children}</body>
+          </html>
+        </ClerkProvider>
       </body>
     </html>
   );

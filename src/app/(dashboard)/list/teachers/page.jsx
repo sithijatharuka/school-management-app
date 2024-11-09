@@ -1,10 +1,9 @@
 "use client";
 import styles from "@/app/(dashboard)/list/teachers/page.module.css";
-import FormModel from "@/components/FormModels/FormModel";
 import TeacherFormModel from "@/components/FormModels/TeacherFormModel";
 import Table from "@/components/Table/table";
 import { deleteTeacher, getAllTeachers } from "@/lib/actions/teacherAction";
-import { role, teachersData } from "@/lib/data";
+import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
@@ -41,6 +40,8 @@ const columns = [
 ];
 
 const TeachersListPage = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+  const role = user?.publicMetadata.role;
   const [open, setOpen] = useState(false);
 
   const [teachersData, setTeachersData] = useState([]);

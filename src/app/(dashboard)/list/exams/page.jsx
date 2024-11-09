@@ -1,11 +1,9 @@
 "use client";
 import styles from "@/app/(dashboard)/list/teachers/page.module.css";
 import ExamsFormModel from "@/components/FormModels/ExamsFormModel";
-import FormModel from "@/components/FormModels/FormModel";
 import Table from "@/components/Table/table";
-import { deleteStudent, getAllStudents } from "@/lib/actions";
 import { deleteExam, getAllExams } from "@/lib/actions/examsActions";
-import { role, teachersData } from "@/lib/data";
+import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
@@ -28,7 +26,7 @@ const columns = [
     accessor: "totalMarks",
   },
   {
-    header: "Duration",
+    header: "Duration (Hours)",
     accessor: "duration",
   },
   {
@@ -38,6 +36,8 @@ const columns = [
 ];
 
 const ExamListPage = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+  const role = user?.publicMetadata.role;
   const [open, setOpen] = useState(false);
 
   const [examsData, setExamsData] = useState([]);

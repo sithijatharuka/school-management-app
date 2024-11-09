@@ -1,3 +1,4 @@
+"use server";
 import { Assignment } from "../model/asgmt_model";
 import { connectToDb } from "../utils";
 

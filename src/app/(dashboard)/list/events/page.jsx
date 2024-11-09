@@ -1,11 +1,9 @@
 "use client";
 import styles from "@/app/(dashboard)/list/teachers/page.module.css";
 import EventsFormModel from "@/components/FormModels/EventsFormModel";
-import FormModel from "@/components/FormModels/FormModel";
 import Table from "@/components/Table/table";
-import { deleteStudent, getAllStudents } from "@/lib/actions";
 import { deleteEvent, getAllEvents } from "@/lib/actions/events_actions";
-import { role, teachersData } from "@/lib/data";
+import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
@@ -38,6 +36,8 @@ const columns = [
 ];
 
 const EventsListPage = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+  const role = user?.publicMetadata.role;
   const [open, setOpen] = useState(false);
 
   const [eventsData, setEventsData] = useState([]);

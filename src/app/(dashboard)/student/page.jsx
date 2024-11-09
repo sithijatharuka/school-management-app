@@ -1,4 +1,4 @@
-import styles from "@/app/(dashboard)/students/page.module.css";
+import styles from "@/app/(dashboard)/student/page.module.css";
 const Students = () => {
   return (
     <div className={styles.container}>

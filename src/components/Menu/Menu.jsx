@@ -1,6 +1,8 @@
+"use client";
 import Link from "next/link";
 import styles from "./Menu.module.css";
-import { role } from "@/lib/data";
+import { useUser } from "@clerk/nextjs";
+// import { role } from "@/lib/data";
 
 const menuItems = [
   {
@@ -70,6 +72,8 @@ const menuItems = [
 ];
 
 const Menu = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+  const role = user?.publicMetadata.role;
   return (
     <div className={styles.wrapper}>
       {menuItems.map((i) => (

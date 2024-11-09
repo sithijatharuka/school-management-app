@@ -4,11 +4,11 @@ import FormModel from "@/components/FormModels/FormModel";
 import Table from "@/components/Table/table";
 import { deleteStudent, getAllStudents } from "@/lib/actions/students";
 import {} from "@/lib/actions/students";
-import { role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { z } from "zod";
 import React, { useState, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
 
 const teacherSchema = z.object({
   username: z
@@ -41,6 +41,9 @@ const columns = [
 ];
 
 const StudentsListPage = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+  const role = user?.publicMetadata.role;
+
   const [open, setOpen] = useState(false);
 
   const [studentsData, setStudentsData] = useState([]);
