@@ -1,11 +1,11 @@
 "use client";
-import styles from "@/components/FormModel/FormModel.module.css";
+import styles from "@/components/FormModels/FormModel.module.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import InputField from "../InputField/InputField";
 import Image from "next/image";
-import { addStudent } from "@/lib/actions";
+import { addStudent, createUser } from "@/lib/actions/students";
 import { useState } from "react";
 
 const schema = z.object({
@@ -39,7 +39,7 @@ const FormModel = () => {
 
   return (
     <form action={addStudent} className={styles.wrapper}>
-      <h1>Create a new teacher</h1>
+      <h1>Create a new Student</h1>
       <span>Authentication Information</span>
       <div className={styles.elementBox}>
         <InputField
@@ -98,6 +98,12 @@ const FormModel = () => {
         <InputField
           label="Blood Type"
           name="bloodType"
+          register={register}
+          error={errors.bloodType}
+        />
+        <InputField
+          label="Role Type"
+          name="role"
           register={register}
           error={errors.bloodType}
         />

@@ -1,9 +1,10 @@
 "use client";
 import styles from "@/app/(dashboard)/list/teachers/page.module.css";
+import ExamsFormModel from "@/components/FormModels/ExamsFormModel";
 import FormModel from "@/components/FormModels/FormModel";
-import TeacherFormModel from "@/components/FormModels/TeacherFormModel";
 import Table from "@/components/Table/table";
-import { deleteTeacher, getAllTeachers } from "@/lib/actions/teacherAction";
+import { deleteStudent, getAllStudents } from "@/lib/actions";
+import { deleteExam, getAllExams } from "@/lib/actions/examsActions";
 import { role, teachersData } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,28 +12,24 @@ import React, { useState, useEffect } from "react";
 
 const columns = [
   {
-    header: "Info",
-    accessor: "info",
+    header: "Exam Name",
+    accessor: "examName",
   },
   {
-    header: "First name",
-    accessor: "firstName",
+    header: "Exam Date",
+    accessor: "examDate",
   },
   {
-    header: "Last Name",
-    accessor: "lastName",
+    header: "Subject",
+    accessor: "subject",
   },
   {
-    header: "Phone",
-    accessor: "phone",
+    header: "Total Marks",
+    accessor: "totalMarks",
   },
   {
-    header: "Email",
-    accessor: "email",
-  },
-  {
-    header: "Address",
-    accessor: "address",
+    header: "Duration",
+    accessor: "duration",
   },
   {
     header: "Actions",
@@ -40,17 +37,17 @@ const columns = [
   },
 ];
 
-const TeachersListPage = () => {
+const ExamListPage = () => {
   const [open, setOpen] = useState(false);
 
-  const [teachersData, setTeachersData] = useState([]);
+  const [examsData, setExamsData] = useState([]);
 
   // Fetch students data when the component mounts
   useEffect(() => {
     const fetchStudentsData = async () => {
       try {
-        const data = await getAllTeachers(); // Fetch all students
-        setTeachersData(data);
+        const data = await getAllExams(); // Fetch all students
+        setExamsData(data);
       } catch (error) {
         console.error("Error fetching students data:", error);
       }
@@ -60,13 +57,13 @@ const TeachersListPage = () => {
   }, []);
 
   // Handle the delete action
-  const handleDelete = async (teacherId) => {
+  const handleDelete = async (examId) => {
     try {
-      const response = await deleteTeacher(teacherId); // Call deleteStudent with the student ID
+      const response = await deleteExam(examId); // Call deleteStudent with the student ID
       if (response.success) {
         // Remove the student from the state to update the table
-        const updatedData = await getAllTeachers();
-        setTeachersData(updatedData); // Update the state with the latest data
+        const updatedData = await getAllExams();
+        setExamsData(updatedData); // Update the state with the latest data
       } else {
         console.log("Failed to delete student:", response.error);
       }
@@ -77,24 +74,11 @@ const TeachersListPage = () => {
 
   const renderRow = (item) => (
     <tr className={styles.row} key={item.id}>
-      <td className={styles.rowData}>
-        <Image
-          className={styles.img}
-          src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=1200"
-          alt=""
-          width={40}
-          height={40}
-        />
-        <div className="">
-          <h3>{item.firstName}</h3>
-          <p>{item?.email}</p>
-        </div>
-      </td>
-      <td>{item.firstName}</td>
-      <td>{item.lastName}</td>
-      <td>{item.phone}</td>
-      <td>{item.email}</td>
-      <td>{item.address}</td>
+      <td>{item.examName}</td>
+      <td>{item.examDate.toDateString()}</td>
+      <td>{item.subject}</td>
+      <td>{item.totalMarks}</td>
+      <td>{item.duration}</td>
       <td>
         <div className={styles.actionbox}>
           <Link className={styles.link} href={"/"}>
@@ -122,7 +106,7 @@ const TeachersListPage = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.topBar}>
-        <h2 className={styles.mainName}>All Teachers</h2>
+        <h2 className={styles.mainName}>All Exams</h2>
         <div className={styles.actionBar}>
           <button className={styles.btnCreate} onClick={() => setOpen(true)}>
             <Image src="/create.png" alt="View" width={16} height={16} />
@@ -133,16 +117,15 @@ const TeachersListPage = () => {
                 <div className={styles.closeBox} onClick={() => setOpen(false)}>
                   <Image src="/close.png" alt="" height={14} width={14} />
                 </div>
-                <TeacherFormModel />
+                <ExamsFormModel />
               </div>
             </div>
           )}
         </div>
       </div>
-
-      <Table columns={columns} renderRow={renderRow} data={teachersData} />
+      <Table columns={columns} renderRow={renderRow} data={examsData} />
     </div>
   );
 };
 
-export default TeachersListPage;
+export default ExamListPage;
