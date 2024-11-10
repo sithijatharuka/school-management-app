@@ -3,32 +3,6 @@ import bcrypt from "bcryptjs";
 import User from "../model/user_model";
 import { Student } from "@/lib/model/students";
 import { connectToDb } from "../utils";
-import { toast } from "react-toastify";
-
-// export const createUser = async (formData) => {
-//   console.log("userData:", formData);
-
-//   const {
-//     username,
-//     email,
-//     password,
-//     role = "student",
-//   } = Object.fromEntries(formData);
-
-//   // Hash the password before saving it
-//   const hashedPassword = await bcrypt.hash(password, 10);
-
-//   const user = new User({
-//     username,
-//     email,
-//     password: hashedPassword,
-//     role,
-//   });
-//   console.log(user);
-
-//   await user.save();
-//   return user;
-// };
 
 // Add a new student
 export const addStudent = async (formData) => {
@@ -184,5 +158,17 @@ export const deleteStudent = async (studentId) => {
   } catch (error) {
     console.log("Error deleting student:", error);
     return { error: "Failed to delete student" };
+  }
+};
+
+// Get student count
+export const getStudentCount = async () => {
+  try {
+    await connectToDb();
+    const studentCount = await Student.countDocuments(); // Counts the number of students
+    return { count: studentCount };
+  } catch (error) {
+    console.log("Error fetching student count:", error);
+    return { error: "Failed to retrieve student count" };
   }
 };

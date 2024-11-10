@@ -6,29 +6,8 @@ import { deleteStudent, getAllStudents } from "@/lib/actions/students";
 import {} from "@/lib/actions/students";
 import Image from "next/image";
 import Link from "next/link";
-import { z } from "zod";
 import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
-
-const teacherSchema = z.object({
-  username: z
-    .string()
-    .min(3, { message: "Username must be at least 3 characters long!" })
-    .max(20, { message: "Username must be at most 20 characters long!" }),
-  email: z.string().email({ message: "Invalid email address!" }),
-  password: z
-    .string()
-    .min(8, { message: "Password must be at least 8 characters long!" }),
-  firstName: z.string().min(1, { message: "First name is required!" }),
-  lastName: z.string().min(1, { message: "Last name is required!" }),
-  parentPhone: z.string().min(1, { message: "Phone is required!" }),
-  studentPhone: z.string().min(1, { message: "Phone is required!" }),
-  address: z.string().min(1, { message: "Address is required!" }),
-  bloodType: z.string().min(1, { message: "Blood Type is required!" }),
-  birthday: z.date({ message: "Birthday is required!" }),
-  sex: z.enum(["male", "female"], { message: "Sex is required!" }),
-  img: z.instanceof(File, { message: "Image is required" }),
-});
 
 const columns = [
   { header: "Info", accessor: "info" },
@@ -127,9 +106,11 @@ const StudentsListPage = () => {
       <div className={styles.topBar}>
         <h2 className={styles.mainName}>All Students</h2>
         <div className={styles.actionBar}>
-          <button className={styles.btnCreate} onClick={() => setOpen(true)}>
-            <Image src="/create.png" alt="View" width={16} height={16} />
-          </button>
+          {role === "admin" && (
+            <button className={styles.btnCreate} onClick={() => setOpen(true)}>
+              <Image src="/create.png" alt="View" width={16} height={16} />
+            </button>
+          )}
           {open && (
             <div className={styles.screenOverlay}>
               <div className={styles.box}>

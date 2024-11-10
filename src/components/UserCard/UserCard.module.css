@@ -1,65 +1,104 @@
 .wrapper {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 100%;
   height: 150px;
-  min-width: 50px;
-  margin: 5px;
-  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+}
+
+.content {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex: 1;
-
-  /* Modern gradient background */
-  background: linear-gradient(135deg, #cfcefe 0%, #e5e4ff 100%);
-
-  /* Enhanced border radius */
-  border-radius: 16px;
-
-  /* Modern shadow effect */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06), inset 0 2px 4px rgba(255, 255, 255, 0.2);
-
-  /* Smooth transition for hover effects */
-  transition: all 0.2s ease-in-out;
-
-  /* Optional: Add border */
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  /* Optional: Add backdrop filter for frosted glass effect */
-  backdrop-filter: blur(8px);
+  gap: 0.5rem;
 }
 
-/* Hover effect */
+.count {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+.type {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
 .wrapper:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -2px rgba(0, 0, 0, 0.03);
 }
 
-/* Active state */
-.wrapper:active {
-  transform: translateY(0);
-  box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1),
-    0 2px 3px -2px rgba(0, 0, 0, 0.05), inset 0 2px 4px rgba(255, 255, 255, 0.2);
-}
-
-/* Optional: Add content styles */
-.wrapper-content {
-  opacity: 0.9;
-  color: #4338ca;
-  text-align: center;
-}
-
-/* Optional: Add responsive behavior */
 @media (max-width: 768px) {
   .wrapper {
-    height: 120px;
-    padding: 12px;
+    min-width: 150px;
+    height: 100px;
+    padding: 1.25rem;
+  }
+
+  .count {
+    font-size: 1.75rem;
+  }
+
+  .type {
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
   .wrapper {
-    height: 100px;
-    padding: 10px;
+    min-width: 130px;
+    height: 90px;
+    padding: 1rem;
   }
+
+  .count {
+    font-size: 1.5rem;
+  }
+}
+
+/* Optional: Different color variants */
+.wrapper.primary::before {
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+}
+
+.wrapper.success::before {
+  background: linear-gradient(90deg, #059669, #10b981);
+}
+
+.wrapper.warning::before {
+  background: linear-gradient(90deg, #d97706, #f59e0b);
+}
+
+.wrapper.danger::before {
+  background: linear-gradient(90deg, #dc2626, #ef4444);
 }

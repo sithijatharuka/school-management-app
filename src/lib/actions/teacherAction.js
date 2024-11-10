@@ -47,7 +47,7 @@ export const addTeacher = async (formData) => {
     return { success: true };
   } catch (error) {
     console.log("Error adding teacher:", error);
-    return { error: "Failed to add teacher" };
+    return { error: true };
   }
 };
 
@@ -71,7 +71,7 @@ export const getTeacherById = async (teacherId) => {
     if (!teacher) {
       return { error: "Teacher not found" };
     }
-    return teacher;
+    return teacher.toObject();
   } catch (error) {
     console.log("Error fetching teacher by ID:", error);
     return { error: "Failed to retrieve teacher" };
@@ -132,5 +132,17 @@ export const deleteTeacher = async (teacherId) => {
   } catch (error) {
     console.log("Error deleting teacher:", error);
     return { error: "Failed to delete teacher" };
+  }
+};
+
+// Get student count
+export const getTeacherCount = async () => {
+  try {
+    await connectToDb();
+    const studentCount = await Teacher.countDocuments(); // Counts the number of students
+    return { counts: studentCount };
+  } catch (error) {
+    console.log("Error fetching student count:", error);
+    return { error: "Failed to retrieve student count" };
   }
 };

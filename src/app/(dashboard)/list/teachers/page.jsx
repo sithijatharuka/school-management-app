@@ -125,9 +125,11 @@ const TeachersListPage = () => {
       <div className={styles.topBar}>
         <h2 className={styles.mainName}>All Teachers</h2>
         <div className={styles.actionBar}>
-          <button className={styles.btnCreate} onClick={() => setOpen(true)}>
-            <Image src="/create.png" alt="View" width={16} height={16} />
-          </button>
+          {role === "admin" && (
+            <button className={styles.btnCreate} onClick={() => setOpen(true)}>
+              <Image src="/create.png" alt="View" width={16} height={16} />
+            </button>
+          )}
           {open && (
             <div className={styles.screenOverlay}>
               <div className={styles.box}>

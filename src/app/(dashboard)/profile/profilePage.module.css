@@ -1,0 +1,106 @@
+/* ProfilePage.module.css */
+.container {
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #f3f4f6;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.profileCard {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.banner {
+  height: 200px;
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+}
+
+.profileContent {
+  position: relative;
+  padding: 0 2rem 2rem;
+}
+
+.avatarWrapper {
+  position: relative;
+  margin-top: -64px;
+}
+
+.avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  border: 4px solid white;
+  background-color: white;
+}
+
+.userInfo {
+  margin-top: 1rem;
+}
+
+.userName {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.userRole {
+  color: #6b7280;
+  font-size: 1.125rem;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .infoGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.infoCard {
+  background-color: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.infoItem {
+  display: flex;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.infoItem:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 500;
+  color: #4b5563;
+  width: 100px;
+}
