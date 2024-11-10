@@ -1,15 +1,13 @@
 "use client";
 import styles from "@/components/FormModels/FormModel.module.css";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import InputField from "../InputField/InputField";
-import Image from "next/image";
-import { addStudent } from "@/lib/actions/students";
-import { useState } from "react";
 import { addExam } from "@/lib/actions/examsActions";
 
 const ExamsFormModel = () => {
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return (
     <form action={addExam} className={styles.wrapper}>
       <h1>Create a new Exam</h1>
@@ -22,7 +20,11 @@ const ExamsFormModel = () => {
         <InputField label="Duration" name="duration" />
       </div>
 
-      <button type="submit" className={styles.createBtn}>
+      <button
+        onClick={handleRefresh}
+        type="submit"
+        className={styles.createBtn}
+      >
         Create
       </button>
     </form>

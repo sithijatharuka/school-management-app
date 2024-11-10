@@ -1,10 +1,7 @@
 "use client";
 
 import styles from "@/components/Navbar/Navbar.module.css";
-// import { role } from "@/lib/data";
 import { UserButton, useUser } from "@clerk/nextjs";
-import { FloatLabel } from "primereact/floatlabel";
-import { InputText } from "primereact/inputtext";
 
 export default function Navbar() {
   const { isLoaded, isSignedIn, user } = useUser();

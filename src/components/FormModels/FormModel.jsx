@@ -1,12 +1,7 @@
 "use client";
 import styles from "@/components/FormModels/FormModel.module.css";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import InputField from "../InputField/InputField";
-import Image from "next/image";
 import { addStudent, createUser } from "@/lib/actions/students";
-import { useState } from "react";
 
 const FormModel = () => {
   const handleRefresh = () => {
@@ -17,16 +12,12 @@ const FormModel = () => {
     <form action={addStudent} className={styles.wrapper}>
       <h1>Create a new Student</h1>
       <span>Authentication Information</span>
-      <div className={styles.elementBox}>
-        <InputField label="Username" name="username" />
-        <InputField type="email" label="Email" name="email" />
-        <InputField label="Password" name="password" type="password" />
-      </div>
+
       <span>Personal Information</span>
       <div className={styles.elementBox}>
+        <InputField type="email" label="Email" name="email" />
         <InputField label="First Name" name="firstName" />
         <InputField label="Last Name" name="lastName" />
-        <InputField label="Parent Phone Number" name="parentsPhone" />
         <InputField label="Student Phone Number" name="studentPhone" />
         <InputField label="Address" name="address" />
       </div>

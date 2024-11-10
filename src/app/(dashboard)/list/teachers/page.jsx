@@ -81,7 +81,7 @@ const TeachersListPage = () => {
       <td className={styles.rowData}>
         <Image
           className={styles.img}
-          src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
           alt=""
           width={40}
           height={40}

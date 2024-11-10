@@ -3,7 +3,6 @@ import styles from "@/app/(dashboard)/list/teachers/page.module.css";
 import FormModel from "@/components/FormModels/FormModel";
 import Table from "@/components/Table/table";
 import { deleteStudent, getAllStudents } from "@/lib/actions/students";
-import {} from "@/lib/actions/students";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
@@ -11,7 +10,6 @@ import { useUser } from "@clerk/nextjs";
 
 const columns = [
   { header: "Info", accessor: "info" },
-  { header: "User Nmae", accessor: "username" },
   { header: "First Name", accessor: "firstName" },
   { header: "Last Name", accessor: "lastName" },
   { header: "Phone", accessor: "studentsPhone" },
@@ -62,17 +60,16 @@ const StudentsListPage = () => {
       <td className={styles.rowData}>
         <Image
           className={styles.img}
-          src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
           alt=""
           width={40}
           height={40}
         />
         <div className="">
-          <h3>{item.username}</h3>
+          <h3>{item.firstName}</h3>
           <p>{item?.email}</p>
         </div>
       </td>
-      <td>{item.username}</td>
       <td>{item.firstName}</td>
       <td>{item.lastName}</td>
       <td>{item.studentPhone}</td>

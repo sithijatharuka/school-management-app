@@ -1,4 +1,5 @@
 "use client";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import styles from "@/app/(dashboard)/student/page.module.css";
 import cssStyle from "@/app/(dashboard)/admin/page.module.css";
 import AttendanceBox from "@/components/AttendenceBox/AttendanceBox";
@@ -9,6 +10,7 @@ import { getTeacherCount } from "@/lib/actions/teacherAction";
 import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import { getAllEvents } from "@/lib/actions/events_actions";
+import BigClender from "@/components/BigCalender/BigCalender";
 
 const Admin = () => {
   const [studentCount, setStudentCount] = useState(0);
@@ -55,8 +57,9 @@ const Admin = () => {
           <UserCard count={teacherCount} type="Teachers" />
         </div>
         <div className={cssStyle.chartBox}>
-          {/* <GenderBox />
-          <AttendanceBox /> */}
+          <h3>Welcome to Edumate 🎉</h3>
+          <br />
+          <h2>Simplifying School Management, One Click at a Time</h2>
         </div>
       </div>
       <div className={cssStyle.right}>

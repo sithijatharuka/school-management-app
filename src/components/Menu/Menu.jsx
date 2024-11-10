@@ -3,7 +3,6 @@ import Link from "next/link";
 import styles from "./Menu.module.css";
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
-// import { role } from "@/lib/data";
 
 const Menu = () => {
   const { isLoaded, isSignedIn, user } = useUser();

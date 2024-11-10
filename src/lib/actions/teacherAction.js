@@ -1,7 +1,5 @@
 "use server";
-import bcrypt from "bcryptjs";
 import { Teacher } from "../model/teacherModel";
-import User from "../model/user_model";
 import { connectToDb } from "../utils";
 
 // Add a new teacher
@@ -12,35 +10,12 @@ export const addTeacher = async (formData) => {
   try {
     await connectToDb();
 
-    // Step 2: Create the user (directly within the addStudent function)
-    if (!formData) {
-      throw new Error("userData is required to create the user.");
-    }
-    const { username, email, password } = Object.fromEntries(formData);
-
-    // Hash the password before saving it
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const user = new User({
-      username,
-      email,
-      password: hashedPassword,
-      role: "teacher",
-    });
-
-    await user.save();
-    console.log("User created:", user);
-
-    // Step 2: Create student and link to user
-
     const newTeacher = new Teacher({
-      username,
       firstName,
       lastName,
       phone,
       address,
       email,
-      user: user._id,
     });
     await newTeacher.save();
     console.log("Teacher saved to db");

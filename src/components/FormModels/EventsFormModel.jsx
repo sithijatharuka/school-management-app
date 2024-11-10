@@ -4,9 +4,13 @@ import InputField from "../InputField/InputField";
 import { addEvent } from "@/lib/actions/events_actions";
 
 const EventsFormModel = () => {
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return (
     <form action={addEvent} className={styles.wrapper}>
-      <h1>Create a new Exam</h1>
+      <h1>Create a new Event</h1>
       <span>Authentication Information</span>
       <div className={styles.elementBox}>
         <InputField label="Event Name" name="eventName" />
@@ -16,7 +20,11 @@ const EventsFormModel = () => {
         <InputField label="Description" name="description" />
       </div>
 
-      <button type="submit" className={styles.createBtn}>
+      <button
+        onClick={handleRefresh}
+        type="submit"
+        className={styles.createBtn}
+      >
         Create
       </button>
     </form>

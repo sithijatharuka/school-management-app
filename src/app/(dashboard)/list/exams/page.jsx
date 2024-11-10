@@ -5,7 +5,6 @@ import Table from "@/components/Table/table";
 import { deleteExam, getAllExams } from "@/lib/actions/examsActions";
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 const columns = [
@@ -40,6 +39,7 @@ const ExamListPage = () => {
   const role = user?.publicMetadata.role;
   const [open, setOpen] = useState(false);
 
+  let isEdit = false;
   const [examsData, setExamsData] = useState([]);
 
   // Fetch students data when the component mounts
@@ -81,14 +81,18 @@ const ExamListPage = () => {
       <td>{item.duration}</td>
       <td>
         <div className={styles.actionbox}>
-          <Link className={styles.link} href={"/"}>
+          {role === "admin" && (
             <button
               className={`${styles.btn} ${styles.btn1}`}
               aria-label="View"
+              onClick={() => {
+                setOpen(true);
+                isEdit = true;
+              }}
             >
               <Image src="/view.png" alt="View" width={16} height={16} />
             </button>
-          </Link>
+          )}
           {role === "admin" && (
             <button
               className={`${styles.btn} ${styles.btn2}`}
@@ -119,7 +123,8 @@ const ExamListPage = () => {
                 <div className={styles.closeBox} onClick={() => setOpen(false)}>
                   <Image src="/close.png" alt="" height={14} width={14} />
                 </div>
-                <ExamsFormModel />
+                if(isEdit){<ExamsFormModel data={examsData} />}else
+                {<ExamsFormModel />}
               </div>
             </div>
           )}

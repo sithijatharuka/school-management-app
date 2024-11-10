@@ -2,7 +2,7 @@
 import styles from "@/app/(dashboard)/student/page.module.css";
 import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
-import { getAllEvents } from "@/lib/actions/events_actions"; // Make sure this action fetches events from your schema
+import { getAllEvents } from "@/lib/actions/events_actions";
 import BigClender from "@/components/BigCalender/BigCalender";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -10,11 +10,10 @@ const TeacherPage = () => {
   const [value, setValue] = useState(new Date());
   const [eventsData, setEventsData] = useState([]);
 
-  // Fetch events data when the component mounts
   useEffect(() => {
     const fetchEventsData = async () => {
       try {
-        const data = await getAllEvents(); // Fetch all events based on your schema
+        const data = await getAllEvents();
         setEventsData(data);
       } catch (error) {
         console.error("Error fetching events data:", error);

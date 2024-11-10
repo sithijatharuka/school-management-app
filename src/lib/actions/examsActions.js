@@ -1,8 +1,6 @@
 "use server";
 import { connectToDb } from "../utils"; // Update with your database connection utility
-import { z } from "zod";
 import { Exam } from "../model/examsModel";
-import { examSchema } from "@/components/FormModels/ExamsFormModel";
 
 // Add a new exam
 export const addExam = async (formData) => {
