@@ -6,17 +6,8 @@ import { connectToDb } from "../utils";
 export const addStudent = async (formData) => {
   // student
 
-  const {
-    firstName,
-    lastName,
-    email,
-    username,
-    studentPhone,
-    address,
-    birthday,
-    gender,
-    userData,
-  } = Object.fromEntries(formData);
+  const { firstName, lastName, email, studentPhone, address } =
+    Object.fromEntries(formData);
 
   try {
     await connectToDb();
@@ -25,11 +16,8 @@ export const addStudent = async (formData) => {
       firstName,
       lastName,
       email,
-      username,
       studentPhone,
       address,
-      birthday,
-      gender,
     });
     await newStudent.save();
     console.log("Student saved to db");
