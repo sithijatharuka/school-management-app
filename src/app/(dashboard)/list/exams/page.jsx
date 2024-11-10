@@ -83,18 +83,6 @@ const ExamListPage = () => {
         <div className={styles.actionbox}>
           {role === "admin" && (
             <button
-              className={`${styles.btn} ${styles.btn1}`}
-              aria-label="View"
-              onClick={() => {
-                setOpen(true);
-                isEdit = true;
-              }}
-            >
-              <Image src="/view.png" alt="View" width={16} height={16} />
-            </button>
-          )}
-          {role === "admin" && (
-            <button
               className={`${styles.btn} ${styles.btn2}`}
               aria-label="Delete"
               onClick={() => handleDelete(item._id)}

@@ -76,14 +76,6 @@ const StudentsListPage = () => {
       <td>{item.address}</td>
       <td>
         <div className={styles.actionbox}>
-          <Link className={styles.link} href={"/"}>
-            <button
-              className={`${styles.btn} ${styles.btn1}`}
-              aria-label="View"
-            >
-              <Image src="/view.png" alt="View" width={16} height={16} />
-            </button>
-          </Link>
           {role === "admin" && (
             <button
               className={`${styles.btn} ${styles.btn2}`}
