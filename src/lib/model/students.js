@@ -5,13 +5,8 @@ const studentSchema = new mongoose.Schema(
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    studentPhone: { type: String, required: true, unique: true },
-    address: String,
-    // user: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "User",
-    //   required: true,
-    // },
+    studentPhone: { type: String, required: true },
+    address: { type: String },
   },
   { timestamps: true }
 );

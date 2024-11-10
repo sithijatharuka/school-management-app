@@ -11,8 +11,6 @@ const FormModel = () => {
   return (
     <form action={addStudent} className={styles.wrapper}>
       <h1>Create a new Student</h1>
-      <span>Authentication Information</span>
-
       <span>Personal Information</span>
       <div className={styles.elementBox}>
         <InputField type="email" label="Email" name="email" />
