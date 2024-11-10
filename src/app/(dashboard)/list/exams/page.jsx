@@ -39,7 +39,6 @@ const ExamListPage = () => {
   const role = user?.publicMetadata.role;
   const [open, setOpen] = useState(false);
 
-  let isEdit = false;
   const [examsData, setExamsData] = useState([]);
 
   // Fetch students data when the component mounts
@@ -111,8 +110,7 @@ const ExamListPage = () => {
                 <div className={styles.closeBox} onClick={() => setOpen(false)}>
                   <Image src="/close.png" alt="" height={14} width={14} />
                 </div>
-                if(isEdit){<ExamsFormModel data={examsData} />}else
-                {<ExamsFormModel />}
+                <ExamsFormModel />
               </div>
             </div>
           )}
