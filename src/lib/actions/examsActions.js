@@ -55,19 +55,9 @@ export const getExamById = async (examId) => {
 
 // Update an existing exam
 export const updateExam = async (examId, formData) => {
-  const { examName, examDate, subject, totalMarks, duration } =
-    Object.fromEntries(formData);
+  const { examName, examDate, subject, totalMarks, duration } = formData;
 
   try {
-    // Validate data using Zod schema
-    examSchema.parse({
-      examName,
-      examDate: new Date(examDate),
-      subject,
-      totalMarks: parseInt(totalMarks),
-      duration,
-    });
-
     await connectToDb();
     const updatedExam = await Exam.findByIdAndUpdate(
       examId,
