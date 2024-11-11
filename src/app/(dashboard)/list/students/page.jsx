@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
+import FormUpdateModel from "@/components/FormModels/UpdateForms/FormUpdateModel";
 
 const columns = [
   { header: "Info", accessor: "info" },
@@ -20,6 +21,9 @@ const columns = [
 const StudentsListPage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   const role = user?.publicMetadata.role;
+
+  const [editOpen, setEditOpen] = useState(false);
+  const [editEvent, setEditEvent] = useState(null);
 
   const [open, setOpen] = useState(false);
 
@@ -77,13 +81,25 @@ const StudentsListPage = () => {
       <td>
         <div className={styles.actionbox}>
           {role === "admin" && (
-            <button
-              className={`${styles.btn} ${styles.btn2}`}
-              aria-label="Delete"
-              onClick={() => handleDelete(item._id)}
-            >
-              <Image src="/delete.png" alt="Delete" width={16} height={16} />
-            </button>
+            <>
+              <button
+                className={`${styles.btn} ${styles.btn1}`}
+                aria-label="View"
+                onClick={() => {
+                  setEditEvent(item); // Set the event data to be edited
+                  setEditOpen(true); // Open the edit modal
+                }}
+              >
+                <Image src="/view.png" alt="Delete" width={16} height={16} />
+              </button>
+              <button
+                className={`${styles.btn} ${styles.btn2}`}
+                aria-label="Delete"
+                onClick={() => handleDelete(item._id)}
+              >
+                <Image src="/delete.png" alt="Delete" width={16} height={16} />
+              </button>
+            </>
           )}
         </div>
       </td>
@@ -107,6 +123,20 @@ const StudentsListPage = () => {
                   <Image src="/close.png" alt="" height={14} width={14} />
                 </div>
                 <FormModel />
+              </div>
+            </div>
+          )}
+          {/* Update Form */}
+          {editOpen && editEvent && (
+            <div className={styles.screenOverlay}>
+              <div className={styles.box}>
+                <div
+                  className={styles.closeBox}
+                  onClick={() => setEditOpen(false)}
+                >
+                  <Image src="/close.png" alt="" height={14} width={14} />
+                </div>
+                <FormUpdateModel students={editEvent} />
               </div>
             </div>
           )}

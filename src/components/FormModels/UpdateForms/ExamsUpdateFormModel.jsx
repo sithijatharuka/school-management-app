@@ -55,7 +55,7 @@ const ExamsUpdateFormModel = ({ examD }) => {
   };
 
   return (
-    <form action={addExam} onSubmit={handleUpdate} className={styles.wrapper}>
+    <form onSubmit={handleUpdate} className={styles.wrapper}>
       <h1>Update Exam</h1>
       <div className={styles.elementBox}>
         <InputField

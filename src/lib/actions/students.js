@@ -57,38 +57,18 @@ export const getStudentById = async (studentId) => {
 
 // Update an existing student
 export const updateStudent = async (studentId, formData) => {
-  const {
-    username: userName,
-    email,
-    password,
-    firstName,
-    lastName,
-    parentsPhone,
-    studentPhone,
-    address,
-    bloodType,
-    birthday,
-    gender,
-    img,
-  } = Object.fromEntries(formData);
+  const { firstName, lastName, email, studentPhone, address } = formData;
 
   try {
     await connectToDb();
     const updatedStudent = await Student.findByIdAndUpdate(
       studentId,
       {
-        userName,
-        email,
-        password,
         firstName,
         lastName,
-        parentsPhone,
+        email,
         studentPhone,
         address,
-        bloodType,
-        birthday,
-        gender,
-        img,
       },
       { new: true }
     );
