@@ -4,7 +4,7 @@ import { connectToDb } from "../utils";
 
 // Add a new teacher
 export const addTeacher = async (formData) => {
-  const { username, firstName, lastName, phone, address, email } =
+  const { firstName, lastName, phone, address, email } =
     Object.fromEntries(formData);
 
   try {
@@ -55,15 +55,7 @@ export const getTeacherById = async (teacherId) => {
 
 // Update an existing teacher
 export const updateTeacher = async (teacherId, formData) => {
-  const {
-    firstName,
-    lastName,
-    teacherId: updatedTeacherId,
-    phone,
-    address,
-    email,
-    password,
-  } = Object.fromEntries(formData);
+  const { firstName, lastName, phone, address, email } = formData;
 
   try {
     await connectToDb();
@@ -72,11 +64,9 @@ export const updateTeacher = async (teacherId, formData) => {
       {
         firstName,
         lastName,
-        teacherId: updatedTeacherId,
         phone,
         address,
         email,
-        password,
       },
       { new: true }
     );

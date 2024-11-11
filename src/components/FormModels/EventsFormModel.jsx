@@ -11,7 +11,6 @@ const EventsFormModel = () => {
   return (
     <form action={addEvent} className={styles.wrapper}>
       <h1>Create a new Event</h1>
-      <span>Authentication Information</span>
       <div className={styles.elementBox}>
         <InputField label="Event Name" name="eventName" />
         <InputField label="Event Date" name="eventDate" type="date" />

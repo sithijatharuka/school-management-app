@@ -11,7 +11,6 @@ const ExamsFormModel = () => {
   return (
     <form action={addExam} className={styles.wrapper}>
       <h1>Create a new Exam</h1>
-      <span>Authentication Information</span>
       <div className={styles.elementBox}>
         <InputField label="Exam Name" name="examName" />
         <InputField label="Exam Date" name="examDate" type="date" />

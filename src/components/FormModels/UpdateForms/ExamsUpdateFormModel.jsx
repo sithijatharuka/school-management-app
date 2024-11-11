@@ -93,7 +93,7 @@ const ExamsUpdateFormModel = ({ examD }) => {
       </div>
 
       <button type="submit" className={styles.createBtn}>
-        Create
+        Update
       </button>
     </form>
   );

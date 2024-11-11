@@ -50,7 +50,7 @@ const FormUpdateModel = ({ students }) => {
 
   return (
     <form onSubmit={handleUpdate} className={styles.wrapper}>
-      <h1>Create a new Student</h1>
+      <h1>Update Student</h1>
       <span>Personal Information</span>
       <div className={styles.elementBox}>
         <InputField
