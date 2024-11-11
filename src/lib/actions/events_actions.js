@@ -54,8 +54,7 @@ export const getEventById = async (eventId) => {
 
 // Update an existing event
 export const updateEvent = async (eventId, formData) => {
-  const { eventName, eventDate, eventTime, location, description } =
-    Object.fromEntries(formData);
+  const { eventName, eventDate, eventTime, location, description } = formData;
 
   try {
     await connectToDb();

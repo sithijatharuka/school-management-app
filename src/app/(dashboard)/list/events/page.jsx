@@ -1,6 +1,7 @@
 "use client";
 import styles from "@/app/(dashboard)/list/teachers/page.module.css";
 import EventsFormModel from "@/components/FormModels/EventsFormModel";
+import EventsUpdateFormModel from "@/components/FormModels/UpdateForms/EventsUpdateFormModel";
 import Table from "@/components/Table/table";
 import { deleteEvent, getAllEvents } from "@/lib/actions/events_actions";
 import { useUser } from "@clerk/nextjs";
@@ -39,6 +40,8 @@ const EventsListPage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   const role = user?.publicMetadata.role;
   const [open, setOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
+  const [editEvent, setEditEvent] = useState(null); // Store the event to be edited
 
   const [eventsData, setEventsData] = useState([]);
 
@@ -82,13 +85,25 @@ const EventsListPage = () => {
       <td>
         <div className={styles.actionbox}>
           {role === "admin" && (
-            <button
-              className={`${styles.btn} ${styles.btn2}`}
-              aria-label="Delete"
-              onClick={() => handleDelete(item._id)}
-            >
-              <Image src="/delete.png" alt="Delete" width={16} height={16} />
-            </button>
+            <>
+              <button
+                className={`${styles.btn} ${styles.btn1}`}
+                aria-label="View"
+                onClick={() => {
+                  setEditEvent(item); // Set the event data to be edited
+                  setEditOpen(true); // Open the edit modal
+                }}
+              >
+                <Image src="/view.png" alt="Delete" width={16} height={16} />
+              </button>
+              <button
+                className={`${styles.btn} ${styles.btn2}`}
+                aria-label="Delete"
+                onClick={() => handleDelete(item._id)}
+              >
+                <Image src="/delete.png" alt="Delete" width={16} height={16} />
+              </button>
+            </>
           )}
         </div>
       </td>
@@ -112,6 +127,20 @@ const EventsListPage = () => {
                   <Image src="/close.png" alt="" height={14} width={14} />
                 </div>
                 <EventsFormModel />
+              </div>
+            </div>
+          )}
+          {/* Update Form */}
+          {editOpen && editEvent && (
+            <div className={styles.screenOverlay}>
+              <div className={styles.box}>
+                <div
+                  className={styles.closeBox}
+                  onClick={() => setEditOpen(false)}
+                >
+                  <Image src="/close.png" alt="" height={14} width={14} />
+                </div>
+                <EventsUpdateFormModel eventData={editEvent} />
               </div>
             </div>
           )}
