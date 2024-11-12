@@ -35,7 +35,9 @@ export default function Navbar() {
       </div>
 
       {isMenuOpen && ( // Conditionally render the menu when it's open
-        <Menu />
+        <Menu
+          className={`${styles.wrapper} ${isMenuOpen ? styles.open : ""}`}
+        />
       )}
     </div>
   );

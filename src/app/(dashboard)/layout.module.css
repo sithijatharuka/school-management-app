@@ -12,32 +12,6 @@
   width: 100%;
 }
 
-/* title */
-
-.title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #1f2937;
-  letter-spacing: -0.02em;
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  transition: color 0.2s ease;
-}
-
-/* Optional: Very subtle hover effect */
-.title:hover {
-  color: #6366f1;
-}
-
-/* Optional: Add a small accent dot */
-.title::after {
-  content: ".";
-  color: #6366f1;
-  margin-left: 1px;
-}
-
 /* ////// */
 
 .left {
@@ -50,6 +24,7 @@
   width: 85%;
   height: 100vh;
   /* overflow-y: auto;  */
+  background-color: #f6f9f8;
   overflow: hidden;
   margin-right: 10px;
 }
@@ -68,8 +43,5 @@
   .right {
     width: fit-content;
     overflow-y: auto;
-  }
-  .titleBox {
-    display: none;
   }
 }

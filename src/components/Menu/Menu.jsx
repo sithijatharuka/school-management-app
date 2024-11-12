@@ -3,10 +3,18 @@ import Link from "next/link";
 import styles from "./Menu.module.css";
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
+import { Button } from "primereact/button";
+import { useState } from "react";
 
 const Menu = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   const role = user?.publicMetadata.role;
+
+  const [open, setOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setOpen((prevState) => !prevState); // Toggle the menu visibility
+  };
 
   const menuItems = [
     {
@@ -58,6 +66,9 @@ const Menu = () => {
   ];
   return (
     <div className={styles.wrapper}>
+      <div className={styles.titleBox}>
+        <h1 className={styles.eduMate}>EduMate</h1>
+      </div>
       {menuItems.map((i) => (
         <div className={styles.textWrapper} key={i.title}>
           <span className={styles.title}>{i.title}</span>
@@ -73,6 +84,22 @@ const Menu = () => {
           })}
         </div>
       ))}
+      <Link className={styles.closeBtn} href="">
+        <Image
+          className={styles.closeImg}
+          src="/close.png"
+          alt=""
+          width={13}
+          height={15}
+          onClick={toggleMenu}
+        />
+        <span>Close</span>
+      </Link>
+      {open && (
+        <Menu
+          className={`${styles.wrapper} ${isMenuOpen ? styles.close : ""}`}
+        />
+      )}
     </div>
   );
 };
