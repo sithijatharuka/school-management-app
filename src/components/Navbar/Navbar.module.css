@@ -1,39 +1,8 @@
-/* .container {
-  height: 50px;
-  display: flex;
-  justify-items: center;
-  justify-content: end;
-  background-color: #f7f8fa;
-}
-
-.avatarContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.nameBox {
-  width: 20%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: end;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-left: 10px;
-  margin-right: 10px;
-  background-color: #f1f0ff;
-} */
-
 .container {
   height: 64px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   background-color: white;
   padding: 0 24px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -52,6 +21,10 @@
   background-color: transparent;
 }
 
+.menuBox {
+  cursor: pointer;
+}
+
 .avatarContainer:hover {
   background-color: #f8f9ff;
 }
@@ -60,9 +33,12 @@
   min-width: 120px;
   padding: 0 8px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   text-align: right;
+}
+
+.names {
+  margin-right: 10px;
 }
 
 .nameText {
@@ -120,4 +96,51 @@
 .avatarContainer:hover .avatar {
   border-color: #6366f1;
   transform: scale(1.02);
+}
+
+.menuBtn {
+  border: none;
+  border-radius: 50%; /* Makes it completely round */
+  width: 40px; /* Equal width and height for perfect circle */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background-color: transparent;
+}
+
+/* Optional hover effect */
+.menuBtn:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Subtle background on hover */
+}
+
+/* If you want it slightly rounded rather than completely circular */
+.menuBtn {
+  border-radius: 8px; /* Less rounded corners */
+}
+
+/* Small Screens (max-width: 768px) */
+@media (max-width: 768px) {
+}
+
+/* Medium Screens (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .menuBox {
+    display: none;
+  }
+  .container {
+    justify-content: flex-end;
+  }
+}
+
+/* Large Screens (1024px and up) */
+@media (min-width: 1025px) {
+  .menuBox {
+    display: none;
+  }
+  .container {
+    justify-content: flex-end;
+  }
 }
