@@ -11,12 +11,14 @@
   width: 100%;
   border-collapse: collapse;
   margin: 10px;
+  overflow-x: auto; /* Make table horizontally scrollable on small screens */
 }
 
 .customTable th,
 .customTable td {
   font-size: 0.875rem; /* Small text size */
   padding: 8px; /* Add padding for spacing */
+  text-align: left; /* Align text to the left for better readability */
 }
 
 /* Apply border and background only to tbody rows */
@@ -33,4 +35,24 @@
 /* Hover effect for tbody rows */
 .customTable tbody tr:hover {
   background-color: #f1f0ff; /* Replace with your desired color for lamaPurpleLight */
+}
+
+/* Media query for small screens (mobile) */
+@media (max-width: 600px) {
+  .customTable {
+    display: block; /* Make table block-level to enable horizontal scrolling */
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS devices */
+  }
+
+  .customTable th,
+  .customTable td {
+    padding: 6px; /* Reduce padding for better spacing on small screens */
+    font-size: 0.75rem; /* Adjust font size for smaller screens */
+  }
+
+  .headerText {
+    font-size: 0.75rem; /* Adjust header font size for small screens */
+    padding: 6px; /* Reduce padding for better alignment on small screens */
+  }
 }

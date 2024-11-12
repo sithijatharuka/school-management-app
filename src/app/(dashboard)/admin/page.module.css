@@ -1,4 +1,4 @@
-.container {
+/* .container {
   width: 100%;
   height: 100vh;
   background-color: #f7f8fa;
@@ -28,4 +28,59 @@
   width: 100%;
   height: 450px;
   padding: 10px;
+} */
+
+/* new */
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f8fa;
+  display: flex;
+  flex-direction: column; /* Default to column layout for mobile */
+}
+
+.left {
+  width: 100%; /* Full width on mobile */
+  padding: 10px;
+  height: auto; /* Allow height to adjust on smaller screens */
+}
+
+.right {
+  width: 100%; /* Full width on mobile */
+  height: auto; /* Allow height to adjust */
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.userCardBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chartBox {
+  margin-top: 20px;
+  width: 100%;
+  height: auto; /* Allow height to adjust */
+  padding: 10px;
+}
+
+/* Media query for tablets and larger devices */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row; /* Switch to row layout for larger screens */
+  }
+
+  .left {
+    width: 65%; /* 65% width for left container on larger screens */
+  }
+
+  .right {
+    width: 35%; /* 35% width for right container on larger screens */
+  }
+
+  .chartBox {
+    height: 450px; /* Fix height of chart on larger screens */
+  }
 }
