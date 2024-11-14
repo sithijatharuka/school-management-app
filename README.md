@@ -1,6 +1,6 @@
 The complete production web application can be accessed via the following link:
 
-[https://edumates.vercel.app/](https://edumates.vercel.app) 
+[https://edumates.vercel.app/](https://edumates.vercel.app)
 
 **Getting Started**
 
@@ -19,7 +19,7 @@ yarn dev
 # or
 pnpm dev
 # or
-bun dev
+bun dev55
 ```
 
 Open [http://localhost:3000](http://localhost:3000/) with your browser to see the result.

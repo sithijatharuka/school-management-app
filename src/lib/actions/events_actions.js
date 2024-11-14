@@ -4,8 +4,7 @@ import { connectToDb } from "../utils";
 
 // Add a new event
 export const addEvent = async (formData) => {
-  const { eventName, eventDate, eventTime, location, description } =
-    Object.fromEntries(formData);
+  const { eventName, eventDate, eventTime, location, description } = formData;
 
   try {
     await connectToDb();
@@ -21,7 +20,7 @@ export const addEvent = async (formData) => {
     return { success: true };
   } catch (error) {
     console.log("Error adding event:", error);
-    return { error: "Failed to add event" };
+    return { error: error._message };
   }
 };
 
